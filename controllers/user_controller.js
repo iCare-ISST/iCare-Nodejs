@@ -45,36 +45,24 @@ exports.new = function(req, res, next) {
 
 // POST /users
 exports.create = function(req, res, next) {
-    var user = models.User.build({ username: req.body.user.username,
-                                   password: req.body.user.password
-                                });
 
-    // El login debe ser unico:
-    models.User.find({where: {username: req.body.user.username}})
-        .then(function(existing_user) {
-            if (existing_user) {
-                var emsg = "El usuario \""+ req.body.user.username +"\" ya existe."
-                req.flash('error', emsg);
-                res.render('users/new', { user: user });
-            } else {
-                // Guardar en la BBDD
-                return user.save({fields: ["username", "password", "salt"]})
-                    .then(function(user) { // Renderizar pagina de usuarios
-                        req.flash('success', 'Usuario creado con éxito.');
-                        res.redirect('/session');
-                    })
-                    .catch(Sequelize.ValidationError, function(error) {
-                        req.flash('error', 'Errores en el formulario:');
-                        for (var i in error.errors) {
-                            req.flash('error', error.errors[i].value);
-                        };
-                        res.render('users/new', { user: user });
-                    });
-            }
-        })
-        .catch(function(error) { 
-            next(error);
-        });
+    var user = {
+      username: req.body.username,
+      password: req.body.password
+    };
+
+    models.User.create(user)
+      .then(function(user) {
+        req.flash('success', 'Usuario creado con éxito.');
+        res.redirect('/users');
+      })
+      .catch(Sequelize.ValidationError, function(error) {
+        req.flash('error', 'Errores en el formulario:');
+        for (var i in error.errors) {
+            req.flash('error', error.errors[i].value);
+        };
+        res.render('users/new', { user: user });
+      });
 };
 
 
@@ -87,8 +75,8 @@ exports.edit = function(req, res, next) {
 // PUT /users/:id
 exports.update = function(req, res, next) {
 
-    req.user.username  = req.body.user.username;
-    req.user.password  = req.body.user.password;
+    req.user.username  = req.body.username;
+    req.user.password  = req.body.password;
 
     req.user.save({fields: ["username", "password", "salt"]})
         .then(function(user) {

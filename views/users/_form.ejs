@@ -20,14 +20,14 @@ function confirmPassword(){
 <div> 
   <% if (!user.id){
   	%> <label for="preg" class="rem">Usuario: </label>
-  	<input type="text" id="username" name="user[username]" value="<%= user.username %>"/> <p>
+  	<input type="text" id="username" name="username" value="<%= user.username %>"/> <p>
   <% } else { %>
      Username: <%= user.username %>
   <% }	%>
  </div>
  <div>
     <label for="user_password" class="rem">Contraseña: </label>
-   <input type="password" id="user_password" name="user[password]" /> <p>
+   <input type="password" id="user_password" name="password" /> <p>
  </div>
  <div>
    <label for="user_confirm_password" class="rem">Confirmar Contraseña: </label>

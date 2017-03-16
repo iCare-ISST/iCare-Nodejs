@@ -52,30 +52,30 @@ exports.new = function(req, res, next) {
 
 // POST /patients
 exports.create = function(req, res, next) {
-    var patient = models.Patient.build({ patientname: req.body.patient.patientname, 
-                                   lastname: req.body.patient.lastname ,
-                                   birthdate:req.body.patient.birthdate,
-                                   mobilephone:req.body.patient.mobilephone,
-                                   landlinephone:req.body.patient.landlinephone,
-                                   address:req.body.patient.address,
-                                   location:req.body.patient.location,
-                                   province:req.body.patient.province
-                               });
+    
+    var patient = {
+      patientname: req.body.patientname, 
+      lastname: req.body.lastname ,
+      birthdate:req.body.birthdate,
+      mobilephone:req.body.mobilephone,
+      landlinephone:req.body.landlinephone,
+      address:req.body.address,
+      location:req.body.location,
+      province:req.body.province
+    };
 
-                // Guardar en la BBDD
-                return patient.save({fields: ["patientname", "lastname", "birthdate", "mobilephone", "landlinephone", "address","location", "province"]})
-                    .then(function(patient) { // Renderizar pagina de usuarios
-                        req.flash('success', 'Paciente creado con éxito.');
-                        res.redirect('/patients/show');
-                    })
-                    .catch(Sequelize.ValidationError, function(error) {
-                        req.flash('error', 'Errores en el formulario:');
-                        for (var i in error.errors) {
-                            req.flash('error', error.errors[i].value);
-                        };
-                        res.render('patients/new', { patient: patient });
-                    });
-        
+    models.Patient.create(patient)
+      .then(function(patient) {
+        req.flash('success', 'Paciente creado con éxito.');
+        res.redirect('/patients');
+      })
+      .catch(Sequelize.ValidationError, function(error) {
+        req.flash('error', 'Errores en el formulario:');
+        for (var i in error.errors) {
+            req.flash('error', error.errors[i].value);
+        };
+        res.render('patients/new', { patient: patient });
+      });
 };
 
 
@@ -88,13 +88,13 @@ exports.edit = function(req, res, next) {
 // PUT /patients/:id
 exports.update = function(req, res, next) {
 
-    req.patient.patientname  = req.body.patient.patientname;
-    req.patient.lastname  = req.body.patient.lastname;
-    req.patient.birthdate  = req.body.patient.birthdate;
-    req.patient.mobilephone  = req.body.patient.mobilephone;
-    req.patient.landlinephone  = req.body.patient.landlinephone;
-    req.patient.location  = req.body.patient.location;
-    req.patient.province  = req.body.patient.province;
+    req.patient.patientname  = req.body.patientname;
+    req.patient.lastname  = req.body.lastname;
+    req.patient.birthdate  = req.body.birthdate;
+    req.patient.mobilephone  = req.body.mobilephone;
+    req.patient.landlinephone  = req.body.landlinephone;
+    req.patient.location  = req.body.location;
+    req.patient.province  = req.body.province;
 
 
     req.patient.save({fields: ["patientname", "lastname", "birthdate", "mobilephone", "landlinephone", "address","location", "province"]})
