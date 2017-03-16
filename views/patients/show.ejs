@@ -1,0 +1,53 @@
+
+<h2>Paciente</h2>
+
+<p>
+  <b>Nombre de Paciente:</b>
+  <%= patient.patientname %>
+</p>
+
+<p>
+  <b>Apellidos</b>
+  <%= patient.lastname %>
+</p>
+<p>
+  <b>Fecha de Nacimiento</b>
+  <%= patient.birthdate %>
+</p>
+<p>
+  <b>Teléfono Móvil</b>
+  <%= patient.mobilephone %>
+</p>
+<p>
+  <b>Teléfono Fijo</b>
+  <%= patient.landlinephone %>
+</p>
+<p>
+  <b>Dirección</b>
+  <%= patient.address %>
+</p>
+<p>
+  <b>Localidad</b>
+  <%= patient.location %>
+</p>
+<p>
+  <b>Provincia</b>
+  <%= patient.province %>
+</p>
+
+<p>
+  <a href="/patients/<%= patient.id %>/edit"> 
+    <button type="button"> Editar </button>
+  </a>  
+  <a href="/patients/<%= patient.id %>?_method=DELETE"> 
+    <button type="button"
+            onClick="return confirm('Borrar cuenta: <%= patient.patientname %>');">
+       Borrar 
+    </button>
+  </a>
+</p>
+
+
+<a href="/patients"> 
+   <button type="button">Volver</button>
+</a>

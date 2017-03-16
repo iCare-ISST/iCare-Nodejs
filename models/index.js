@@ -26,5 +26,7 @@ var sequelize = new Sequelize(url,
 
 // Importar la definicion de la tabla Users de user.js
 var User = sequelize.import(path.join(__dirname,'user'));
+var Patient = sequelize.import(path.join(__dirname,'patient'));
 
 exports.User = User;       // exportar definición de tabla Users
+exports.Patient = Patient;       // exportar definición de tabla PAtients

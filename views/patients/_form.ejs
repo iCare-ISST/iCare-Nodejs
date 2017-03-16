@@ -1,0 +1,25 @@
+<div> 
+  <label for="preg" class="rem">Nombre: </label>
+  	<input type="text" id="patientname" name="patient[patientname]" value="<%= patient.patientname %>"/> 
+    <label for="preg" class="rem">Apellidos: </label>
+  	<input type="text" id="lastname" name="patient[lastname]" value="<%= patient.lastname %>"/>
+  	  <label for="preg" class="rem">Fecha nacimiento (xx-yy-zz): </label>
+  	<input type="text" id="birthdate" name="patient[birthdate]" value="<%= patient.birthdate %>"/>
+  	  <label for="preg" class="rem">Teléfono Móvil: </label>
+  	<input type="text" id="mobilephone" name="patient[mobilephone]" value="<%= patient.mobilephone %>"/>
+  	  <label for="preg" class="rem">Teléfono Fijo: </label>
+  	<input type="text" id="landlinephone" name="patient[landlinephone]" value="<%= patient.landlinephone %>"/>
+  	  <label for="preg" class="rem">Dirección: </label>
+  	<input type="text" id="address" name="patient[address]" value="<%= patient.address %>"/>
+  	  <label for="preg" class="rem">Localidad: </label>
+  	<input type="text" id="location" name="patient[location]" value="<%= patient.location %>"/>
+  	  <label for="preg" class="rem">Provincia: </label>
+  	<input type="text" id="province" name="patient[province]" value="<%= patient.province %>"/>
+ </div>
+
+ <div>
+ <a href="/"><button type="button"> Cancelar</button></a>
+ </div>
+ <div>
+ <input type="submit" value="Guardar">
+ </div>

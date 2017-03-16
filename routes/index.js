@@ -3,12 +3,14 @@ var router = express.Router();
 
 var userController = require('../controllers/user_controller');
 var sessionController = require('../controllers/session_controller');
+var patientController = require('../controllers/patient_controller');
 /* GET home page. */
 router.get('/', sessionController.loginRequired, function(req, res, next) {
   res.render('index');
 });
 
 router.param('userId', userController.load); // autoload :userId
+router.param('patientId', patientController.load); // autoload :patientId
 
 // Users
 router.get('/users',                    userController.index);   // listado usuarios
@@ -18,6 +20,15 @@ router.post('/users',                   userController.create);  // registrar us
 router.get('/users/:userId(\\d+)/edit', sessionController.loginRequired, userController.edit);     // editar información de cuenta
 router.put('/users/:userId(\\d+)',      sessionController.loginRequired, userController.update);   // actualizar información de cuenta
 router.delete('/users/:userId(\\d+)',   sessionController.loginRequired, userController.destroy);  // borrar cuenta
+
+// Patients
+router.get('/patients',                    patientController.index);   // listado usuarios
+router.get('/patients/:patientId(\\d+)',      patientController.show);    // ver un usuario
+router.get('/patients/new',                patientController.new);     // formulario sign un
+router.post('/patients',                   patientController.create);  // registrar usuario
+router.get('/patients/:patientId(\\d+)/edit', patientController.edit);     // editar información de cuenta
+router.put('/patients/:patientId(\\d+)',      patientController.update);   // actualizar información de cuenta
+router.delete('/patients/:patientsId(\\d+)',  patientController.destroy);  // borrar cuenta
 
 //Sessions
 router.get('/session',    sessionController.new);     // formulario login

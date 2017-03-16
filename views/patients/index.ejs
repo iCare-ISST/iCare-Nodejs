@@ -1,0 +1,36 @@
+ 
+ <h2> Pacientes </h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellidos</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% for (var i in patients) { %>
+      <tr>
+         <td> <%= patients[i].patientname %>  </td>
+         <td> <%= patients[i].lastname %> </td>
+         <td> <a href="/patients/<%= patients[i].id %>" ><button type="button">Ver</button></a>
+              <a href="/patients/<%= patients[i].id %>/edit"><button type="button">Editar</button></a>
+              <a href="/patients/<%= patients[i].id %>?_method=DELETE" 
+                 onClick="return confirm('Borrar cuenta: <%= patients[i].patientname %>');" ><button type="button">
+                 Borrar </button></a> 
+         </td>
+      </tr>
+    <%  }; %>
+  </tbody>
+</table>
+
+<footer>
+  <nav> 
+      <a href="/patients/new" > <button type="button">
+           añadir Paciente
+           </button>
+      </a> 
+  </nav>
+</footer>
