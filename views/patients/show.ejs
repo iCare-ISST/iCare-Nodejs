@@ -35,6 +35,11 @@
   <%= patient.province %>
 </p>
 
+<h3>Familiares:</h3>
+<% for(var i in patient.Relatives) { %>
+  <p><%= patient.Relatives[i].name %> <%= patient.Relatives[i].lastname %></p>
+<% } %> 
+
 <p>
   <a href="/patients/<%= patient.id %>/edit"> 
     <button type="button"> Editar </button>

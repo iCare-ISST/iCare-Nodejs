@@ -2,8 +2,8 @@
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
-    return queryInterface.createTable('Relative', 
-             {  RelativeId: {
+    return queryInterface.createTable('Relatives', 
+             {  id: {
                       type: Sequelize.INTEGER,
                       allowNull: false,
                       primaryKey: true,
@@ -56,6 +56,6 @@ module.exports = {
   },
 
   down: function (queryInterface, Sequelize) {
-    return queryInterface.dropTable('Relative');
+    return queryInterface.dropTable('Relatives');
   }
 };

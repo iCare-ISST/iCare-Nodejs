@@ -3,11 +3,11 @@
 module.exports = {
   up: function (queryInterface, Sequelize) {
     return queryInterface.createTable('RelativesPatients', 
-              { id: {
+              { relativeId: {
                           type: Sequelize.INTEGER,
                           allowNull: false,
                         },
-                RelativeId: {
+                patientId: {
                                 type: Sequelize.INTEGER,
                                 allowNull: false,
                               },                

@@ -1,0 +1,16 @@
+<h3><%= relative.name %></h3>
+
+<form method="post" action="/relatives/<%= relative.id %>?_method=PUT">
+    <input type="hidden" name="editar" value="familiares">
+    <div class="checkbox">
+        <% for(var i in patients) { %>
+            <input type="checkbox" name="on" id="check<%= patients[i].id %>" value="<%= patients[i].id %>" <% if(patients[i].pertenece){ %> checked <%}%>>
+                <label for="check<%= patients[i].id %>"><span style="font-size: 20px;"><%= patients[i].patientname %> <%= patients[i].lastname %></span></label>
+            </br>   
+        <% } %>
+    </div>
+    <div class="botones">
+        <input type="submit" value="Guardar" id="guardar">
+        <a href="/"><button type="button" id="cancelar">Cancelar</button></a>
+    </div>
+</form>

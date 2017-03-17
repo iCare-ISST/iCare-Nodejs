@@ -1,0 +1,60 @@
+
+<h2>Familiar</h2>
+
+<p>
+  <b>Nombre de Familiar:</b>
+  <%= relative.name %>
+</p>
+
+<p>
+  <b>Apellidos</b>
+  <%= relative.lastname %>
+</p>
+<p>
+  <b>Teléfono Móvil</b>
+  <%= relative.mobilephone %>
+</p>
+<p>
+  <b>Teléfono Fijo</b>
+  <%= relative.landlinephone %>
+</p>
+<p>
+  <b>Dirección</b>
+  <%= relative.address %>
+</p>
+<p>
+  <b>Localidad</b>
+  <%= relative.location %>
+</p>
+<p>
+  <b>Provincia</b>
+  <%= relative.province %>
+</p>
+
+<h3>Pacientes Familiares:</h3>
+<% for(var i in relative.Patients) { %>
+  <p><%= relative.Patients[i].patientname %> <%= relative.Patients[i].lastname %></p>
+<% } %> 
+
+<p>
+  <a href="/relatives/<%= relative.id %>/add"> 
+    <button type="button"> Añadir paciente familiar </button>
+  </a> 
+</p>
+
+<p>
+  <a href="/relatives/<%= relative.id %>/edit"> 
+    <button type="button"> Editar </button>
+  </a>  
+  <a href="/relatives/<%= relative.id %>?_method=DELETE"> 
+    <button type="button"
+            onClick="return confirm('Borrar cuenta: <%= relative.name %>');">
+       Borrar 
+    </button>
+  </a>
+</p>
+
+
+<a href="/patients"> 
+   <button type="button">Volver</button>
+</a>

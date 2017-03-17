@@ -1,0 +1,11 @@
+
+<p>
+    Editar Datos de Familiar:
+</p>
+
+<p>
+    <form method="post" action="/relatives/<%= relative.id %>?_method=PUT" >  
+        <input type="hidden" name="editar" value="datos">    
+        <% include _form.ejs %>
+    </form>
+</p>

@@ -4,6 +4,8 @@ var router = express.Router();
 var userController = require('../controllers/user_controller');
 var sessionController = require('../controllers/session_controller');
 var patientController = require('../controllers/patient_controller');
+var relativeController = require('../controllers/relative_controller');
+
 /* GET home page. */
 router.get('/', sessionController.loginRequired, function(req, res, next) {
   res.render('index');
@@ -11,6 +13,7 @@ router.get('/', sessionController.loginRequired, function(req, res, next) {
 
 router.param('userId', userController.load); // autoload :userId
 router.param('patientId', patientController.load); // autoload :patientId
+router.param('relativeId', relativeController.load); // autoload :relativeId
 
 // Users
 router.get('/users',                    userController.index);   // listado usuarios
@@ -34,5 +37,15 @@ router.delete('/patients/:patientsId(\\d+)',  patientController.destroy);  // bo
 router.get('/session',    sessionController.new);     // formulario login
 router.post('/session',   sessionController.create);  // crear sesión
 router.delete('/session', sessionController.destroy); // destruir sesión
+
+// Relatives
+router.get('/relatives/',                           relativeController.index);  // Crear familiar
+router.get('/relatives/:relativeId(\\d+)',          relativeController.show);    // ver un usuario
+router.get('/relatives/new/',                       relativeController.new);  // Crear familiar
+router.get('/relatives/:relativeId(\\d+)/edit',     relativeController.edit);     // editar información del familiar
+router.put('/relatives/:relativeId(\\d+)',          relativeController.update);   // Actualizar familiar
+router.post('/relatives',                           relativeController.create);  // registrar familiar
+router.get('/relatives/:relativeId(\\d+)/add',      relativeController.add);    // Añadir paciente familiar
+router.delete('/relatives/:relativeId(\\d+)',       relativeController.destroy);  // borrar cuenta
 
 module.exports = router;
