@@ -51,7 +51,43 @@
     </button>
   </a>
 </p>
+<div id="contenedor">
+    <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked" />
+    <label for="tab-1" class="tab-label-1">Datos Médicos</label>
+   
+    <input id="tab-2" type="radio" name="radio-set" class="tab-selector-2" />
+    <label for="tab-2" class="tab-label-2">Personas de Contacto</label>
+                           
+    <div class="content">
+        <div class="content-1">
+            
+            
+            <% if (patient.medicaldata !== undefined) { %> 
+            Alergias = <%= patient.medicaldata.alergias %>
+            <p>
+            <a href="/patients/<%= patient.id %>/medicaldata/edit"> 
+            <button type="button"> Editar Datos </button>
+            </p>
+            <% } else { %>
+            <p>
+            <a href="/patients/<%= patient.id %>/medicaldata/new"> 
+            <button type="button"> Añadir nuevos Datos Médicos </button>
+            </p>
+            <% console.log(patient.medicaldata) %>
+            <% console.log(patient.MedicalData) %>
+            <% console.log(patient.MedicalDatum) %>
+            <% console.log(patient) %>            
+            <% } %>
 
+            
+            
+  </a> 
+        </div>
+        <div class="content-2">
+            Contenido2
+        </div>
+    </div>
+</div>
 
 <a href="/patients"> 
    <button type="button">Volver</button>

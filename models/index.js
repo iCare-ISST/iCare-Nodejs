@@ -28,11 +28,16 @@ var sequelize = new Sequelize(url,
 var User = sequelize.import(path.join(__dirname,'user'));
 var Patient = sequelize.import(path.join(__dirname,'patient'));
 var Relative = sequelize.import(path.join(__dirname,'relative'));
+var MedicalData = sequelize.import(path.join(__dirname,'medicaldata'));
 
 // Relaciones
 Relative.belongsToMany(Patient, { through: "RelativesPatients" });
 Patient.belongsToMany(Relative, { through: "RelativesPatients" });
 
+MedicalData.belongsTo(Patient);
+Patient.hasOne(MedicalData);
+
 exports.User = User;       // exportar definición de tabla Users
 exports.Patient = Patient;       // exportar definición de tabla PAtients
 exports.Relative = Relative;       // exportar definición de tabla Relatives
+exports.MedicalData = MedicalData; // exportar definición de tabla MedicalData

@@ -5,6 +5,7 @@ var userController = require('../controllers/user_controller');
 var sessionController = require('../controllers/session_controller');
 var patientController = require('../controllers/patient_controller');
 var relativeController = require('../controllers/relative_controller');
+var medicaldataController = require('../controllers/medicaldata_controller');
 
 /* GET home page. */
 router.get('/', sessionController.loginRequired, function(req, res, next) {
@@ -38,6 +39,7 @@ router.get('/session',    sessionController.new);     // formulario login
 router.post('/session',   sessionController.create);  // crear sesión
 router.delete('/session', sessionController.destroy); // destruir sesión
 
+
 // Relatives
 router.get('/relatives/',                           relativeController.index);  // Crear familiar
 router.get('/relatives/:relativeId(\\d+)',          relativeController.show);    // ver un usuario
@@ -47,5 +49,12 @@ router.put('/relatives/:relativeId(\\d+)',          relativeController.update); 
 router.post('/relatives',                           relativeController.create);  // registrar familiar
 router.get('/relatives/:relativeId(\\d+)/add',      relativeController.add);    // Añadir paciente familiar
 router.delete('/relatives/:relativeId(\\d+)',       relativeController.destroy);  // borrar cuenta
+
+//MedicalData
+router.get('/patients/:patientId(\\d+)/medicaldata/new',                medicaldataController.new);     // formulario rellenar datos
+router.post('/patients/:patientId(\\d+)/medicaldata',                medicaldataController.create);     // Crear datos
+router.get('/patients/:patientId(\\d+)/medicaldata/edit',                medicaldataController.edit);     // formulario editar datos
+router.put('/patients/:patientId(\\d+)/medicaldata',                medicaldataController.update);     // Actualizar datos
+
 
 module.exports = router;

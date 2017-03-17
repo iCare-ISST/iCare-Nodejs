@@ -5,7 +5,8 @@ var Sequelize = require('sequelize');
 
 // Autoload el user asociado a :patientId
 exports.load = function(req, res, next, patientId) {
-    models.Patient.findById(patientId, { include: [models.Relative] })
+
+    models.Patient.findById(patientId, { include: [models.Relative, models.MedicalData] })
         .then(function(patient) {
             if (patient) {
                 req.patient = patient;
