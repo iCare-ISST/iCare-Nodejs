@@ -64,25 +64,24 @@ exports.create = function(req, res, next) {
 
 // GET /patients/:patientsId/medicaldata/edit
 exports.edit = function(req, res, next) {
-    res.render('medicaldata/edit', { medicaldata: medicaldata,
+    res.render('medicaldata/edit', { medicaldata: req.patient.MedicalDatum,
                                      patient:    req.patient});  
 }; 
 
 // PUT /patients/:patientId/medicalData
 exports.update = function(req, res, next) {
+    req.patient.MedicalDatum.alergias = req.body.alergias,
+    req.patient.MedicalDatum.cardiopatias = req.body.cardiopatias,
+    req.patient.MedicalDatum.cardiovasculares = req.body.cardiovasculares,
+    req.patient.MedicalDatum.mentales = req.body.mentales,
+    req.patient.MedicalDatum.gruposanguineo = req.body.gruposanguineo,
+    req.patient.MedicalDatum.medicacion = req.body.medicacion,
+    req.patient.MedicalDatum.otrasafecciones = req.body.otrasafecciones,
+    req.patient.MedicalDatum.peso = req.body.peso,
+    req.patient.MedicalDatum.invalidez = req.body.invalidez,          
+    req.patient.MedicalDatum.PatientId = req.patient.id
 
-    req.medicaldata.alergias = req.body.alergias,
-    req.medicaldata.cardiopatias = req.body.cardiopatias,
-    req.medicaldata.cardiovasculares = req.body.cardiovasculares,
-    req.medicaldata.mentales = req.body.mentales,
-    req.medicaldata.gruposanguineo = req.body.gruposanguineo,
-    req.medicaldata.medicacion = req.body.medicacion,
-    req.medicaldata.otrasafecciones = req.body.otrasafecciones,
-    req.medicaldata.peso = req.body.peso,
-    req.medicaldata.invalidez = req.body.invalidez,          
-    req.medicaldata.PatientId = req.patient.id
-
-    req.medicaldata.save({fields: ["alergias", "cardiopatias", "cardiovasculares", "mentales", "gruposanguineo","medicacion","otrasafecciones","peso","invalidez","PatientId"]})
+    req.patient.MedicalDatum.save({fields: ["alergias", "cardiopatias", "cardiovasculares", "mentales", "gruposanguineo","medicacion","otrasafecciones","peso","invalidez","PatientId"]})
         .then(function(medicaldata) {
             req.flash('success', 'Datos actualizados con éxito.');
             res.redirect('/patients/' + req.patient.id);  // Redirección HTTP a /
