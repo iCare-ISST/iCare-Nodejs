@@ -21,7 +21,7 @@ exports.load = function(req, res, next, patientId) {
 
 // GET /patients
 exports.index = function(req, res, next) {
-    models.Patient.findAll({order: ['patientname']})
+    models.Patient.findAll({order: ['patientname'], include: [models.Relative, models.MedicalData]})
         .then(function(patients) {
             res.render('patients/index', { patients: patients });
         })

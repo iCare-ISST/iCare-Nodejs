@@ -60,28 +60,28 @@
                            
     <div class="content">
         <div class="content-1">
-            
-            
-            <% if (patient.medicaldata !== undefined) { %> 
-            Alergias = <%= patient.medicaldata.alergias %>
-            <p>
+          <% if (patient.MedicalDatum) { %> 
+          <p>Alergias = <%= patient.MedicalDatum.alergias %></p>
+          <p>Cardiopatías = <%= patient.MedicalDatum.cardiopatias %></p>
+          <p>Problemas Cardiovasculares = <%= patient.MedicalDatum.cardiovasculares %></p>
+          <p>Problemas Mentales = <%= patient.MedicalDatum.mentales %></p>
+          <p>Grupo Sanguíneo = <%= patient.MedicalDatum.gruposanguineo %></p>
+          <p>Medicación = <%= patient.MedicalDatum.medicacion %></p>
+          <p>Otras Infecciones = <%= patient.MedicalDatum.otrasafecciones %></p>
+          <p>Peso (kg) = <%= patient.MedicalDatum.peso %></p>
+          <p>Invalidez o problemas de movilidad: = <%= patient.MedicalDatum.invalidez %></p>
+          <p>
             <a href="/patients/<%= patient.id %>/medicaldata/edit"> 
-            <button type="button"> Editar Datos </button>
-            </p>
-            <% } else { %>
-            <p>
+              <button type="button"> Editar Datos </button>
+            </a>
+          </p>
+          <% } else { %>
+          <p>
             <a href="/patients/<%= patient.id %>/medicaldata/new"> 
-            <button type="button"> Añadir nuevos Datos Médicos </button>
-            </p>
-            <% console.log(patient.medicaldata) %>
-            <% console.log(patient.MedicalData) %>
-            <% console.log(patient.MedicalDatum) %>
-            <% console.log(patient) %>            
-            <% } %>
-
-            
-            
-  </a> 
+              <button type="button"> Añadir nuevos Datos Médicos </button>
+            </a>
+          </p>      
+          <% } %>
         </div>
         <div class="content-2">
             Contenido2

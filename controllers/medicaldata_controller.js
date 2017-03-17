@@ -35,7 +35,7 @@ exports.create = function(req, res, next) {
         otrasafecciones: req.body.otrasafecciones,
         peso: req.body.peso,
         invalidez: req.body.invalidez,          
-        id: req.patient.id
+        PatientId: req.patient.id
       });
 
   medicaldata.save()
