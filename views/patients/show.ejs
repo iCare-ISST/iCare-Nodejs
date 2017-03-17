@@ -35,11 +35,6 @@
   <%= patient.province %>
 </p>
 
-<h3>Familiares:</h3>
-<% for(var i in patient.Relatives) { %>
-  <p><%= patient.Relatives[i].name %> <%= patient.Relatives[i].lastname %></p>
-<% } %> 
-
 <p>
   <a href="/patients/<%= patient.id %>/edit"> 
     <button type="button"> Editar </button>
@@ -84,7 +79,13 @@
           <% } %>
         </div>
         <div class="content-2">
-            Contenido2
+            <h3>Familiares:</h3>
+<% for(var i in patient.Relatives) { %>
+  <p>Nombre:<%= patient.Relatives[i].name %> </p>
+  <p>Apellidos:<%= patient.Relatives[i].lastname %> </p>
+  <p>Teléfono Móvil: <%= patient.Relatives[i].mobilephone %> </p>
+  <p>Teléfono Fijo: <%= patient.Relatives[i].landlinephone %> </p>
+<% } %> 
         </div>
     </div>
 </div>
