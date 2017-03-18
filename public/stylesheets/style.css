@@ -35,8 +35,18 @@ a {
 
 section > div {pading: 20px;}
 
-header { text-align: center;}
-nav { text-align: center;}
+header { 
+  text-align: center;
+  background-color: blue;
+}
+
+#iCareService {
+  color:#0066ff;
+}
+
+nav { 
+  text-align: center;
+  }
 section { text-align: left;}
 footer { text-align: center;}
 nav a { margin: 0px 10px 0px 0px;}
@@ -44,6 +54,10 @@ nav a { margin: 0px 10px 0px 0px;}
 .stars {
   float: left;
   clear: both;  
+}
+
+#welcome {
+  color:#0066ff;
 }
 
 #flashinfo {
@@ -266,3 +280,178 @@ transition: all linear 0.1s;
 #login fieldset input[type="submit"]:hover {
   background-color: #28ad63;
 }
+
+* ---------- LISTA PACIENTES ---------- */
+#patientList {
+  margin:50px auto;
+  width: 400px;
+}
+#patientList h2 {
+  background-color: #0066ff;
+  -webkit-border-radius: 20px 20px 0 0;
+  -moz-border-radius: 20px 20px 0 0;
+  border-radius: 20px 20px 0 0;
+  color: #fff;
+  text-align: center;
+  padding: 10px 10px;
+}
+
+#patientList table th {
+  font-size: 20px;
+  background-color:#8080ff;
+  color:#fff;
+  height:20px;
+  padding-left: 90px;
+  padding-right: 90px;
+  text-align: center;
+}
+
+#patientList table #blank {
+  background-color: #eee;
+}
+
+#patientList table tbody tr td button {
+  background-color: #ffcc00;
+  color: #fff;
+  margin: 0 auto;
+  padding: 4px 0;
+  width:50px;
+  height:30px;
+}
+#patientList footer nav button {
+  background-color: #33cc77;
+  color: #fff;
+  display: block;
+  margin: 0 auto;
+  padding: 4px 0;
+  width: 200px;
+}
+
+* ---------- LISTA FAMILIARES --------- */
+#relativeList {
+  margin:50px auto;
+  width: 400px;
+}
+#relativeList h2 {
+  background-color: #0066ff;
+  -webkit-border-radius: 20px 20px 0 0;
+  -moz-border-radius: 20px 20px 0 0;
+  border-radius: 20px 20px 0 0;
+  color: #fff;
+  text-align: center;
+  padding: 10px 10px;
+}
+
+#relativeList table th {
+  font-size: 20px;
+  background-color:#8080ff;
+  color:#fff;
+  height:20px;
+  padding-left: 90px;
+  padding-right: 90px;
+  text-align: center;
+}
+
+#relativeList table #blank {
+  background-color: #eee;
+}
+
+#relativeList table tbody tr td button {
+  background-color: #ffcc00;
+  color: #fff;
+  margin: 0 auto;
+  padding: 4px 0;
+  width:50px;
+  height:30px;
+}
+#relativeList footer nav button {
+  background-color: #33cc77;
+  color: #fff;
+  display: block;
+  margin: 0 auto;
+  padding: 4px 0;
+  width: 200px;
+}
+
+* ---------- LISTA DE USUARIOS ----------- */
+#ruserList {
+  margin:50px auto;
+  width: 400px;
+}
+#userList h2 {
+  background-color: #0066ff;
+  -webkit-border-radius: 20px 20px 0 0;
+  -moz-border-radius: 20px 20px 0 0;
+  border-radius: 20px 20px 0 0;
+  color: #fff;
+  text-align: center;
+  padding: 10px 10px;
+}
+
+#userList table th {
+  font-size: 20px;
+  background-color:#8080ff;
+  color:#fff;
+  height:20px;
+  padding-left: 90px;
+  padding-right: 90px;
+  text-align: center;
+}
+
+#userList table #blank {
+  background-color: #eee;
+}
+
+#userList table tbody tr td button {
+  background-color: #ffcc00;
+  color: #fff;
+  margin: 0 auto;
+  padding: 4px 0;
+  width:50px;
+  height:30px;
+}
+#userList footer nav button {
+  background-color: #33cc77;
+  color: #fff;
+  display: block;
+  margin: 0 auto;
+  padding: 4px 0;
+  width: 200px;
+}
+
+* ---------- NUEVO PACIENTE ----------- */
+
+#newPatient {
+  margin:50px auto;
+  width: 400px;
+}
+
+#newPatient #title{
+  background-color: #0066ff;
+  -webkit-border-radius: 20px 20px 0 0;
+  -moz-border-radius: 20px 20px 0 0;
+  border-radius: 20px 20px 0 0;
+  color: #fff;
+  text-align: center;
+  font-size: 28px;
+  padding: 10px 10px;
+}
+
+.newPatientContainer .rem{
+  font-size: 15px;
+}
+
+.newPatientContainer input {
+  height: 25px;
+}
+
+#save input[type="submit"], #cancel button {
+  background-color: #33cc77;
+  color: #fff;
+  display: block;
+  margin: 0 auto;
+  padding: 4px 0;
+  width: 100px;
+  }
+}
+

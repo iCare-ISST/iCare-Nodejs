@@ -1,25 +1,25 @@
-<div> 
-  <label for="preg" class="rem">Nombre: </label>
-  	<input type="text" id="patientname" name="patientname" value="<%= patient.patientname %>"/> 
-    <label for="preg" class="rem">Apellidos: </label>
-  	<input type="text" id="lastname" name="lastname" value="<%= patient.lastname %>"/>
-  	  <label for="preg" class="rem">Fecha nacimiento (dd-mm-YY): </label>
-  	<input type="text" id="birthdate" name="birthdate" value="<%= patient.birthdate %>"/>
-  	  <label for="preg" class="rem">Teléfono Móvil: </label>
-  	<input type="text" id="mobilephone" name="mobilephone" value="<%= patient.mobilephone %>"/>
-  	  <label for="preg" class="rem">Teléfono Fijo: </label>
-  	<input type="text" id="landlinephone" name="landlinephone" value="<%= patient.landlinephone %>"/>
-  	  <label for="preg" class="rem">Dirección: </label>
-  	<input type="text" id="address" name="address" value="<%= patient.address %>"/>
-  	  <label for="preg" class="rem">Localidad: </label>
-  	<input type="text" id="location" name="location" value="<%= patient.location %>"/>
-  	  <label for="preg" class="rem">Provincia: </label>
-  	<input type="text" id="province" name="province" value="<%= patient.province %>"/>
+<div class="newPatientContainer"> 
+  <label for="preg" class="rem">Nombre </label><br>
+  	<input type="text" id="patientname" name="patientname" value="<%= patient.patientname %>"/><br>
+    <label for="preg" class="rem">Apellidos </label><br>
+  	<input type="text" id="lastname" name="lastname" value="<%= patient.lastname %>"/><br>
+  	  <label for="preg" class="rem">Fecha nacimiento (dd-mm-YY) </label><br>
+  	<input type="text" id="birthdate" name="birthdate" value="<%= patient.birthdate %>"/><br>
+  	  <label for="preg" class="rem">Teléfono Móvil </label><br>
+  	<input type="text" id="mobilephone" name="mobilephone" value="<%= patient.mobilephone %>"/><br>
+  	  <label for="preg" class="rem">Teléfono Fijo </label><br>
+  	<input type="text" id="landlinephone" name="landlinephone" value="<%= patient.landlinephone %>"/><br>
+  	  <label for="preg" class="rem">Dirección </label><br>
+  	<input type="text" id="address" name="address" value="<%= patient.address %>"/><br>
+  	  <label for="preg" class="rem">Localidad </label><br>
+  	<input type="text" id="location" name="location" value="<%= patient.location %>"/><br>
+  	  <label for="preg" class="rem">Provincia </label><br>
+  	<input type="text" id="province" name="province" value="<%= patient.province %>"/><br>
  </div>
 
- <div>
- <a href="/"><button type="button"> Cancelar</button></a>
- </div>
- <div>
+ <div id="save">
  <input type="submit" value="Guardar">
+ </div>
+ <div id="cancel">
+ <a href="/"><button type="button"> Cancelar</button></a>
  </div>
