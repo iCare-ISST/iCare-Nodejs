@@ -17,22 +17,22 @@ router.param('patientId', patientController.load); // autoload :patientId
 router.param('relativeId', relativeController.load); // autoload :relativeId
 
 // Users
-router.get('/users',                    userController.index);   // listado usuarios
-router.get('/users/:userId(\\d+)',      userController.show);    // ver un usuario
-router.get('/users/new',                userController.new);     // formulario sign un
-router.post('/users',                   userController.create);  // registrar usuario
+router.get('/users',                	sessionController.loginRequired, userController.index);   // listado usuarios
+router.get('/users/:userId(\\d+)',      sessionController.loginRequired, userController.show);    // ver un usuario
+router.get('/users/new',                sessionController.loginRequired, userController.new);     // formulario sign un
+router.post('/users',                   sessionController.loginRequired, userController.create);  // registrar usuario
 router.get('/users/:userId(\\d+)/edit', sessionController.loginRequired, userController.edit);     // editar información de cuenta
 router.put('/users/:userId(\\d+)',      sessionController.loginRequired, userController.update);   // actualizar información de cuenta
 router.delete('/users/:userId(\\d+)',   sessionController.loginRequired, userController.destroy);  // borrar cuenta
 
 // Patients
-router.get('/patients',                    patientController.index);   // listado usuarios
-router.get('/patients/:patientId(\\d+)',      patientController.show);    // ver un usuario
-router.get('/patients/new',                patientController.new);     // formulario sign un
-router.post('/patients',                   patientController.create);  // registrar usuario
-router.get('/patients/:patientId(\\d+)/edit', patientController.edit);     // editar información de cuenta
-router.put('/patients/:patientId(\\d+)',      patientController.update);   // actualizar información de cuenta
-router.delete('/patients/:patientsId(\\d+)',  patientController.destroy);  // borrar cuenta
+router.get('/patients',                    sessionController.loginRequired, patientController.index);   // listado usuarios
+router.get('/patients/:patientId(\\d+)',   sessionController.loginRequired, patientController.show);    // ver un usuario
+router.get('/patients/new',                sessionController.loginRequired, patientController.new);     // formulario sign un
+router.post('/patients',                   sessionController.loginRequired, patientController.create);  // registrar usuario
+router.get('/patients/:patientId(\\d+)/edit', sessionController.loginRequired, patientController.edit);     // editar información de cuenta
+router.put('/patients/:patientId(\\d+)',      sessionController.loginRequired, patientController.update);   // actualizar información de cuenta
+router.delete('/patients/:patientsId(\\d+)',  sessionController.loginRequired, patientController.destroy);  // borrar cuenta
 
 //Sessions
 router.get('/session',    sessionController.new);     // formulario login
@@ -41,20 +41,20 @@ router.delete('/session', sessionController.destroy); // destruir sesión
 
 
 // Relatives
-router.get('/relatives/',                           relativeController.index);  // Crear familiar
-router.get('/relatives/:relativeId(\\d+)',          relativeController.show);    // ver un usuario
-router.get('/relatives/new/',                       relativeController.new);  // Crear familiar
-router.get('/relatives/:relativeId(\\d+)/edit',     relativeController.edit);     // editar información del familiar
-router.put('/relatives/:relativeId(\\d+)',          relativeController.update);   // Actualizar familiar
-router.post('/relatives',                           relativeController.create);  // registrar familiar
-router.get('/relatives/:relativeId(\\d+)/add',      relativeController.add);    // Añadir paciente familiar
-router.delete('/relatives/:relativeId(\\d+)',       relativeController.destroy);  // borrar cuenta
+router.get('/relatives/',                           sessionController.loginRequired, relativeController.index);  // Crear familiar
+router.get('/relatives/:relativeId(\\d+)',          sessionController.loginRequired, relativeController.show);    // ver un usuario
+router.get('/relatives/new/',                       sessionController.loginRequired, relativeController.new);  // Crear familiar
+router.get('/relatives/:relativeId(\\d+)/edit',     sessionController.loginRequired, relativeController.edit);     // editar información del familiar
+router.put('/relatives/:relativeId(\\d+)',          sessionController.loginRequired, relativeController.update);   // Actualizar familiar
+router.post('/relatives',                           sessionController.loginRequired, relativeController.create);  // registrar familiar
+router.get('/relatives/:relativeId(\\d+)/add',      sessionController.loginRequired, relativeController.add);    // Añadir paciente familiar
+router.delete('/relatives/:relativeId(\\d+)',       sessionController.loginRequired, relativeController.destroy);  // borrar cuenta
 
 //MedicalData
-router.get('/patients/:patientId(\\d+)/medicaldata/new',                medicaldataController.new);     // formulario rellenar datos
-router.post('/patients/:patientId(\\d+)/medicaldata',                medicaldataController.create);     // Crear datos
-router.get('/patients/:patientId(\\d+)/medicaldata/edit',                medicaldataController.edit);     // formulario editar datos
-router.put('/patients/:patientId(\\d+)/medicaldata',                medicaldataController.update);     // Actualizar datos
+router.get('/patients/:patientId(\\d+)/medicaldata/new',     sessionController.loginRequired, medicaldataController.new);     // formulario rellenar datos
+router.post('/patients/:patientId(\\d+)/medicaldata',        sessionController.loginRequired, medicaldataController.create);     // Crear datos
+router.get('/patients/:patientId(\\d+)/medicaldata/edit',    sessionController.loginRequired, medicaldataController.edit);     // formulario editar datos
+router.put('/patients/:patientId(\\d+)/medicaldata',         sessionController.loginRequired, medicaldataController.update);     // Actualizar datos
 
 
 module.exports = router;
