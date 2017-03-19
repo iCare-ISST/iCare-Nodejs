@@ -17,13 +17,13 @@ router.param('patientId', patientController.load); // autoload :patientId
 router.param('relativeId', relativeController.load); // autoload :relativeId
 
 // Users
-router.get('/users',                	sessionController.loginRequired, userController.index);   // listado usuarios
-router.get('/users/:userId(\\d+)',      sessionController.loginRequired, userController.show);    // ver un usuario
-router.get('/users/new',                sessionController.loginRequired, userController.new);     // formulario sign un
-router.post('/users',                   sessionController.loginRequired, userController.create);  // registrar usuario
-router.get('/users/:userId(\\d+)/edit', sessionController.loginRequired, userController.edit);     // editar información de cuenta
-router.put('/users/:userId(\\d+)',      sessionController.loginRequired, userController.update);   // actualizar información de cuenta
-router.delete('/users/:userId(\\d+)',   sessionController.loginRequired, userController.destroy);  // borrar cuenta
+router.get('/users',                	sessionController.loginRequired, sessionController.adminRequired, userController.index);   // listado usuarios
+router.get('/users/:userId(\\d+)',      sessionController.loginRequired, sessionController.adminOrMyselfRequired, userController.show);    // ver un usuario
+router.get('/users/new',                sessionController.loginRequired, sessionController.adminRequired, userController.new);     // formulario sign un
+router.post('/users',                   sessionController.loginRequired, sessionController.adminRequired, userController.create);  // registrar usuario
+router.get('/users/:userId(\\d+)/edit', sessionController.loginRequired, sessionController.adminOrMyselfRequired, userController.edit);     // editar información de cuenta
+router.put('/users/:userId(\\d+)',      sessionController.loginRequired, sessionController.adminOrMyselfRequired, userController.update);   // actualizar información de cuenta
+router.delete('/users/:userId(\\d+)',   sessionController.loginRequired, sessionController.adminAndNotMyselfRequired, userController.destroy);  // borrar cuenta
 
 // Patients
 router.get('/patients',                    sessionController.loginRequired, patientController.index);   // listado usuarios

@@ -33,6 +33,19 @@ exports.loginRequired = function (req, res, next) {
     }
 };
 
+//MW que comprueba que el usuario es admin 
+exports.adminRequired = function(req,res,next){
+
+    var isAdmin      = req.session.user.isAdmin;
+
+    if (isAdmin) {
+        next();
+    } else {
+      console.log('Operación prohibida: No es administrador.');
+      res.send(403);
+    }
+};
+
 //MW que comprueba que el usuario es admin o el propietario de la cuenta 
 exports.adminOrMyselfRequired = function(req,res,next){
 
