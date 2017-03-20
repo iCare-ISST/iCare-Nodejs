@@ -94,6 +94,7 @@ exports.update = function(req, res, next) {
     req.patient.birthdate  = req.body.birthdate;
     req.patient.mobilephone  = req.body.mobilephone;
     req.patient.landlinephone  = req.body.landlinephone;
+    req.patient.address = req.body.address;
     req.patient.location  = req.body.location;
     req.patient.province  = req.body.province;
 
@@ -118,8 +119,16 @@ exports.update = function(req, res, next) {
 };
 
 
-// DELETE /users/:id
+// DELETE /patients/:id
 exports.destroy = function(req, res, next) {
-    req.patient.destroy()
+    // Borrar Datos médicos al eliminar el paciente
+    models.MedicalData.findAll({where: {patientId: req.patient.id}})
+    .then(function(medicaldata) {
+      if(medicaldata){
+          req.patient.MedicalDatum.destroy();
+         }
+      });
+    req.patient.destroy();
+    res.redirect('/patients');
 };
 

@@ -32,7 +32,7 @@ router.get('/patients/new',                sessionController.loginRequired, pati
 router.post('/patients',                   sessionController.loginRequired, patientController.create);  // registrar usuario
 router.get('/patients/:patientId(\\d+)/edit', sessionController.loginRequired, patientController.edit);     // editar información de cuenta
 router.put('/patients/:patientId(\\d+)',      sessionController.loginRequired, patientController.update);   // actualizar información de cuenta
-router.delete('/patients/:patientsId(\\d+)',  sessionController.loginRequired, patientController.destroy);  // borrar cuenta
+router.delete('/patients/:patientId(\\d+)',  sessionController.loginRequired, patientController.destroy);  // borrar cuenta
 
 //Sessions
 router.get('/session',    sessionController.new);     // formulario login
