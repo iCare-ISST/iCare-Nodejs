@@ -137,9 +137,9 @@ exports.add = function(req, res, next) {
   });
 };
 
-// DELETE /users/:id
+// DELETE /relatives/:id
 exports.destroy = function(req, res, next) {
-    req.relative.destroy().then(function() {
+  req.relative.destroy().then(function() {
     req.relative.getPatients().then(function(patients) {
       for(var i in patients) {
         patients[i].removeRelative(req.relative);

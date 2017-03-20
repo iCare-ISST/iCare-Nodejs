@@ -120,6 +120,15 @@ exports.update = function(req, res, next) {
 
 // DELETE /users/:id
 exports.destroy = function(req, res, next) {
-    req.patient.destroy()
+  req.patient.destroy().then(function() {
+    req.patient.getRelatives().then(function(relatives) {
+      for(var i in relatives) {
+        relatives[i].removePatient(req.patient);
+      }
+    });
+    res.redirect('/');
+  }).catch(function(error) {
+    next(error);
+  })
 };
 
