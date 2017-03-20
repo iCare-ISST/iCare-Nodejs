@@ -419,14 +419,14 @@ transition: all linear 0.1s;
   width: 200px;
 }
 
-* ---------- NUEVO PACIENTE ----------- */
+* ---------- NUEVO PACIENTE Y NUEVO FAMILIAR ----------- */
 
-#newPatient {
+#newPatient, #newRelative {
   margin:50px auto;
   width: 400px;
 }
 
-#newPatient #title{
+#newPatient #title, #newRelative #title {
   background-color: #0066ff;
   -webkit-border-radius: 20px 20px 0 0;
   -moz-border-radius: 20px 20px 0 0;
@@ -437,11 +437,11 @@ transition: all linear 0.1s;
   padding: 10px 10px;
 }
 
-.newPatientContainer .rem{
+.newPatientContainer .rem, .newRelativeContainer .rem{
   font-size: 15px;
 }
 
-.newPatientContainer input {
+.newPatientContainer input, .newRelativeContainer input {
   height: 25px;
 }
 

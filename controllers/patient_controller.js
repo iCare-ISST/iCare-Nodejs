@@ -121,6 +121,7 @@ exports.update = function(req, res, next) {
 
 // DELETE /patients/:id
 exports.destroy = function(req, res, next) {
+
     // Borrar Datos médicos al eliminar el paciente
     models.MedicalData.findAll({where: {patientId: req.patient.id}})
     .then(function(medicaldata) {
@@ -128,7 +129,17 @@ exports.destroy = function(req, res, next) {
           req.patient.MedicalDatum.destroy();
          }
       });
-    req.patient.destroy();
+   
+  req.patient.destroy().then(function() {
+    req.patient.getRelatives().then(function(relatives) {
+      for(var i in relatives) {
+        relatives[i].removePatient(req.patient);
+      }
+    });
     res.redirect('/patients');
+  }).catch(function(error) {
+    next(error);
+  })
+
 };
 
